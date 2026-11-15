@@ -17,6 +17,18 @@
       label.hidden = false;
       label.style.display = "inline-flex";
     });
+
+    // 首次访问时没有任何 radio 被选中, 按页面当前的配色补一个
+    if (!form.querySelector("input:checked")) {
+      var current = document.body.getAttribute("data-md-color-primary");
+      Array.prototype.some.call(inputs, function (input) {
+        if (input.getAttribute("data-md-color-primary") === current) {
+          input.checked = true;
+          return true;
+        }
+        return false;
+      });
+    }
   }
 
   if (document.readyState === "loading") {

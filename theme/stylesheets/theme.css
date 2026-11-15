@@ -148,18 +148,23 @@
 .md-header__option label {
   display: inline-flex !important;
   padding: 0.2rem;
-  border-radius: 0.25rem;
-  opacity: 0.45;
-  transition: opacity 0.15s, transform 0.15s;
+  border-radius: 0.3rem;
+  /* 页头本身就是主题色, 色块需要一层浅色底才浮得起来 */
+  background-color: rgba(255, 255, 255, 0.22);
+  opacity: 0.5;
+  transition: opacity 0.15s, transform 0.15s, background-color 0.15s;
 }
 
 .md-header__option label:hover {
   opacity: 1;
   transform: scale(1.12);
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .md-header__option input:checked + label {
   opacity: 1;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 0 0.1rem rgba(255, 255, 255, 0.9);
 }
 
 .md-header__option label svg {
