@@ -24,6 +24,14 @@
 
     [:octicons-arrow-right-24: 阅读](魔导材料.md)
 
+-   :material-diamond-stone:{ .lg .middle } __前期材料__
+
+    ---
+
+    魔导同素体 (辉银、炽铜、驰金、沉铁) 的成因与数值, 以及从水到远古残骸的绝缘材料筛选。
+
+    [:octicons-arrow-right-24: 阅读](玩法设计/前期材料.md)
+
 -   :material-factory:{ .lg .middle } __魔力生产 · 转化 · 消耗__
 
     ---
