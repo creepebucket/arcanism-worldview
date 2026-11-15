@@ -20,7 +20,7 @@ SITE = Path(__file__).resolve().parent
 ROOT = SITE.parent
 
 sys.path.insert(0, str(SITE / "hooks"))
-from sync_docs import SKIP_DIRS, PAGES, THEME, on_pre_build  # noqa: E402
+from sync_docs import SKIP_DIRS, THEME, on_pre_build  # noqa: E402
 
 
 def snapshot() -> dict[Path, int]:
@@ -33,10 +33,8 @@ def snapshot() -> dict[Path, int]:
             continue
         stamps[md] = md.stat().st_mtime_ns
 
-    for base in (PAGES, THEME):
-        if not base.is_dir():
-            continue
-        for path in base.rglob("*"):
+    if THEME.is_dir():
+        for path in THEME.rglob("*"):
             if path.is_file():
                 stamps[path] = path.stat().st_mtime_ns
 

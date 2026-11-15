@@ -1,88 +1,76 @@
 /* ==========================================================================
    世界观文档 · 配色与排版
-   4 套主题, 每套由两部分组成:
-     --md-primary-*   主题色   用于页头底色、选中的导航项、表格表头等"块"
-     --wz-accent      强调色   用于正文里的链接、加粗、高亮等"字"
-   原始色值原样保留在变量里; 正文用色是从它派生出的可读版本 (见 --wz-accent-ink),
-   因为这两组色直接铺在白底上做文字都会偏浅。
+   站点默认深色。4 套主题各由两部分组成:
+     --md-primary-*   主题色   页头底色、表格表头、导航强调块
+     --wz-accent      强调色   正文里的链接、加粗、高亮、行内代码
+   第二组强调色是给深底用的, 所以直接原样使用, 不需要调亮度。
+   选择器带上 slate, 是为了压过 Material 自带调色板里同名的规则。
    ========================================================================== */
 
 /* ---------- 1 金黄 ---------- */
-[data-md-color-primary="yellow"] {
+[data-md-color-scheme="slate"][data-md-color-primary="yellow"] {
   --md-primary-fg-color: #e6da1f;
   --md-primary-fg-color--light: #efe75a;
   --md-primary-fg-color--dark: #b3a80e;
   --md-primary-bg-color: #17180a;
   --md-primary-bg-color--light: rgba(23, 24, 10, 0.62);
   --wz-accent: #d8d45a;
-  --wz-accent-ink: color-mix(in srgb, #d8d45a 58%, #12130a);
-}
-[data-md-color-primary="yellow"]:not([data-md-color-scheme="slate"]) {
-  --md-typeset-a-color: color-mix(in srgb, #d8d45a 58%, #12130a);
+  --md-typeset-a-color: #d8d45a;
 }
 
 /* ---------- 2 赤红 ---------- */
-[data-md-color-primary="red"] {
+[data-md-color-scheme="slate"][data-md-color-primary="red"] {
   --md-primary-fg-color: #f0332a;
   --md-primary-fg-color--light: #f5605a;
   --md-primary-fg-color--dark: #c01f18;
   --md-primary-bg-color: #1a0705;
   --md-primary-bg-color--light: rgba(26, 7, 5, 0.62);
   --wz-accent: #e15d50;
-  --wz-accent-ink: color-mix(in srgb, #e15d50 74%, #140504);
-}
-[data-md-color-primary="red"]:not([data-md-color-scheme="slate"]) {
-  --md-typeset-a-color: color-mix(in srgb, #e15d50 74%, #140504);
+  --md-typeset-a-color: #e15d50;
 }
 
 /* ---------- 3 青蓝 ---------- */
-[data-md-color-primary="cyan"] {
+[data-md-color-scheme="slate"][data-md-color-primary="cyan"] {
   --md-primary-fg-color: #1fd0e0;
   --md-primary-fg-color--light: #4fdfec;
   --md-primary-fg-color--dark: #12a7b5;
   --md-primary-bg-color: #04262a;
   --md-primary-bg-color--light: rgba(4, 38, 42, 0.62);
   --wz-accent: #4ab8c4;
-  --wz-accent-ink: color-mix(in srgb, #4ab8c4 66%, #031a1c);
-}
-[data-md-color-primary="cyan"]:not([data-md-color-scheme="slate"]) {
-  --md-typeset-a-color: color-mix(in srgb, #4ab8c4 66%, #031a1c);
+  --md-typeset-a-color: #4ab8c4;
 }
 
 /* ---------- 4 翠绿 ---------- */
-[data-md-color-primary="green"] {
+[data-md-color-scheme="slate"][data-md-color-primary="green"] {
   --md-primary-fg-color: #2fd44a;
   --md-primary-fg-color--light: #5ce171;
   --md-primary-fg-color--dark: #1faa36;
   --md-primary-bg-color: #061f0b;
   --md-primary-bg-color--light: rgba(6, 31, 11, 0.62);
   --wz-accent: #67cf67;
-  --wz-accent-ink: color-mix(in srgb, #67cf67 64%, #05160a);
-}
-[data-md-color-primary="green"]:not([data-md-color-scheme="slate"]) {
-  --md-typeset-a-color: color-mix(in srgb, #67cf67 64%, #05160a);
+  --md-typeset-a-color: #67cf67;
 }
 
 /* ---------- 强调色也跟随主题 ---------- */
-[data-md-color-accent="yellow"] {
+[data-md-color-scheme="slate"][data-md-color-accent="yellow"] {
   --md-accent-fg-color: #d8d45a;
-  --md-accent-fg-color--transparent: rgba(216, 212, 90, 0.1);
+  --md-accent-fg-color--transparent: rgba(216, 212, 90, 0.14);
 }
-[data-md-color-accent="red"] {
+[data-md-color-scheme="slate"][data-md-color-accent="red"] {
   --md-accent-fg-color: #e15d50;
-  --md-accent-fg-color--transparent: rgba(225, 93, 80, 0.1);
+  --md-accent-fg-color--transparent: rgba(225, 93, 80, 0.14);
 }
-[data-md-color-accent="cyan"] {
+[data-md-color-scheme="slate"][data-md-color-accent="cyan"] {
   --md-accent-fg-color: #4ab8c4;
-  --md-accent-fg-color--transparent: rgba(74, 184, 196, 0.1);
+  --md-accent-fg-color--transparent: rgba(74, 184, 196, 0.14);
 }
-[data-md-color-accent="green"] {
+[data-md-color-scheme="slate"][data-md-color-accent="green"] {
   --md-accent-fg-color: #67cf67;
-  --md-accent-fg-color--transparent: rgba(103, 207, 103, 0.1);
+  --md-accent-fg-color--transparent: rgba(103, 207, 103, 0.14);
 }
 
 /* ==========================================================================
-   字体
+   字体与正文
    ========================================================================== */
 
 :root {
@@ -98,7 +86,7 @@
   line-height: 1.78;
 }
 
-/* 中文段落两端对齐会让长句里的空格分布更均匀, 但仍以左对齐为准 */
+/* 中文长句两端对齐后空格分布更均匀 */
 .md-typeset p {
   text-align: justify;
   text-justify: inter-ideograph;
@@ -109,7 +97,7 @@
    ========================================================================== */
 
 .md-header {
-  box-shadow: 0 0.1rem 0.4rem rgba(0, 0, 0, 0.14);
+  box-shadow: 0 0.1rem 0.5rem rgba(0, 0, 0, 0.45);
 }
 
 .md-header__title {
@@ -117,13 +105,13 @@
   letter-spacing: 0.02em;
 }
 
-/* 搜索框: 页头是亮色底, 用半透明白底 + 深色字才看得清 */
+/* 页头是亮色底, 搜索框用半透明白底 + 深色字才看得清 */
 .md-search__form {
-  background-color: rgba(255, 255, 255, 0.55);
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 .md-search__form:hover {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
 .md-search__input::placeholder {
@@ -197,24 +185,24 @@
    ========================================================================== */
 
 .md-typeset strong {
-  color: var(--wz-accent-ink);
+  color: var(--wz-accent);
   font-weight: 700;
 }
 
 .md-typeset a:hover {
-  color: var(--wz-accent-ink);
+  color: var(--wz-accent);
   text-decoration: underline;
   text-underline-offset: 0.15em;
 }
 
 .md-typeset mark {
-  background-color: color-mix(in srgb, var(--wz-accent) 45%, transparent);
-  color: #14140c;
+  background-color: color-mix(in srgb, var(--wz-accent) 32%, transparent);
+  color: inherit;
   padding: 0 0.18em;
   border-radius: 0.15em;
 }
 
-/* 行内代码: 淡主题色底, 不用 Material 的灰色 */
+/* 行内代码: 淡强调色底, 不用 Material 的灰 */
 .md-typeset code {
   background-color: color-mix(in srgb, var(--wz-accent) 16%, transparent);
   border-radius: 0.15em;
@@ -231,7 +219,7 @@
 
 .md-nav__link--active,
 .md-nav__link--active:hover {
-  color: var(--wz-accent-ink);
+  color: var(--wz-accent);
   font-weight: 600;
 }
 
@@ -240,10 +228,9 @@
   font-weight: 700;
 }
 
-/* 当前节的高亮条 */
 .md-nav__link:focus,
 .md-nav__link:hover {
-  color: var(--wz-accent-ink);
+  color: var(--wz-accent);
 }
 
 /* 右侧目录的当前位置 */
@@ -258,9 +245,9 @@
    ========================================================================== */
 
 .md-typeset table:not([class]) th {
-  background-color: color-mix(in srgb, var(--md-primary-fg-color) 26%, transparent);
+  background-color: color-mix(in srgb, var(--md-primary-fg-color) 22%, transparent);
   font-weight: 700;
-  color: #14140c;
+  color: var(--md-default-fg-color);
 }
 
 .md-typeset table:not([class]) tbody tr:hover {
@@ -276,7 +263,6 @@
   border-bottom-color: color-mix(in srgb, var(--wz-accent) 45%, transparent);
 }
 
-/* Material 的 admonition 标题色跟随主题 */
 .md-typeset .admonition,
 .md-typeset details {
   border-color: var(--wz-accent);
@@ -292,16 +278,16 @@
    ========================================================================== */
 
 .md-typeset .grid.cards > ul > li {
-  border-color: color-mix(in srgb, var(--wz-accent) 35%, transparent);
+  border-color: color-mix(in srgb, var(--wz-accent) 30%, transparent);
   transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
 }
 
 .md-typeset .grid.cards > ul > li:hover {
   border-color: var(--wz-accent);
   transform: translateY(-2px);
-  box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.5);
 }
 
 .md-typeset .grid.cards > ul > li > hr {
-  border-bottom-color: color-mix(in srgb, var(--wz-accent) 40%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--wz-accent) 35%, transparent);
 }

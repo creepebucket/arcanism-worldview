@@ -20,25 +20,25 @@ theme:
     repo: fontawesome/brands/github
   # 4 种主题色, 页头右侧的调色板按钮循环切换 (Material 用 localStorage 记忆选择)
   palette:
-    - scheme: default
+    - scheme: slate
       primary: yellow
       accent: yellow
       toggle:
         icon: material/hexagon
         name: 金黄 e6da1f
-    - scheme: default
+    - scheme: slate
       primary: red
       accent: red
       toggle:
         icon: material/hexagon
         name: 赤红 f0332a
-    - scheme: default
+    - scheme: slate
       primary: cyan
       accent: cyan
       toggle:
         icon: material/hexagon
         name: 青蓝 1fd0e0
-    - scheme: default
+    - scheme: slate
       primary: green
       accent: green
       toggle:

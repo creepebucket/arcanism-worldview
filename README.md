@@ -10,11 +10,12 @@
 | 路径 | 作用 |
 |------|------|
 | `*.md`、`生产/*.md` | 正文。用 Obsidian 正常编辑即可 |
+| `index.md` | 站点首页, 也是普通笔记, 直接改就行 |
 | `AGENTS.md` | 写给自己和 AI 的协作约定, 不上站 |
 | `.site/mkdocs.yml` | 站点配置: 导航、主题色、Markdown 扩展 |
-| `.site/pages/index.md` | 首页文案 |
 | `.site/theme/` | 4 套配色的 CSS 和色块切换脚本 |
 | `.site/hooks/` | 构建前把根目录正文同步进 `docs/` |
+| `.site/serve.py` | 本地预览入口 |
 | `.site/docs/`、`.site/.build/` | 构建产物, 已在 `.gitignore` 里 |
 
 新增一篇文档后, 记得在 `.site/mkdocs.yml` 的 `nav:` 里加一行, 否则构建会报错。
@@ -40,7 +41,7 @@ python3 -m venv .venv
 
 ## 配色
 
-页头右侧有 4 个色块, 点击即在 4 套主题间切换, 选择记在浏览器 localStorage 里。
+站点默认深色。页头右侧有 4 个色块, 点击即在 4 套主题间切换, 选择记在浏览器 localStorage 里。
 
 | 主题 | 主题色 (页头 / 表格 / 选中项) | 文本强调色 (链接 / 加粗 / 高亮) |
 |------|------|------|

@@ -4,9 +4,8 @@
 位于 docs_dir 之内, 并且 docs_dir 不能是配置文件所在目录的父目录。
 于是每次构建前同步一次 .site/docs/:
 
-    仓库根 *.md      ->  .site/docs/*.md
-    .site/pages/*.md ->  .site/docs/*.md   (站点自己的页面, 如首页)
-    .site/theme/*    ->  .site/docs/*      (样式表和脚本)
+    仓库根 *.md   ->  .site/docs/*.md
+    .site/theme/* ->  .site/docs/*      (样式表和脚本)
 
 同步是幂等的: 内容没变的文件不会被重写, 以免 mkdocs serve 反复重建。
 .site/docs/ 是纯粹的产物, 不出现在 git 里, 也不需要手动维护。
@@ -22,7 +21,6 @@ SITE = Path(__file__).resolve().parent.parent  # .site/
 ROOT = SITE.parent  # 仓库根目录
 DOCS = SITE / "docs"
 THEME = SITE / "theme"
-PAGES = SITE / "pages"
 
 # 不参与建站的目录
 SKIP_DIRS = {".git", ".github", ".obsidian", ".site", "__pycache__", ".venv"}
@@ -41,12 +39,7 @@ def on_pre_build(config, **kwargs) -> None:  # noqa: ARG001
             continue
         wanted[DOCS / rel] = md
 
-    # 2. 站点专属页面 (首页等)
-    if PAGES.is_dir():
-        for md in PAGES.rglob("*.md"):
-            wanted[DOCS / md.relative_to(PAGES)] = md
-
-    # 3. 样式与脚本
+    # 2. 样式与脚本
     if THEME.is_dir():
         for asset in THEME.rglob("*"):
             if asset.is_file():
