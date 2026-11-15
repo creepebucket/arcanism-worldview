@@ -1,0 +1,110 @@
+site_name: 魔力工业世界观
+site_description: 一个魔法工业 mod 的世界观与设定文档
+# GitHub Actions 里通过 SITE_URL 环境变量注入, 本地构建时留空即可
+site_url: !ENV [SITE_URL, ""]
+
+docs_dir: docs
+site_dir: _site
+
+# 构建前把根目录的笔记同步进 docs/, 详见 hooks/sync_docs.py
+hooks:
+  - hooks/sync_docs.py
+
+theme:
+  name: material
+  language: zh
+  # 不用 Google Fonts: 中文用系统字体渲染更好, 也避免国内访问卡在字体请求上
+  font: false
+  icon:
+    logo: material/atom
+    repo: fontawesome/brands/github
+  # 4 种主题色, 页头右侧的调色板按钮循环切换 (Material 用 localStorage 记忆选择)
+  palette:
+    - scheme: default
+      primary: yellow
+      accent: yellow
+      toggle:
+        icon: material/hexagon
+        name: 金黄 e6da1f
+    - scheme: default
+      primary: red
+      accent: red
+      toggle:
+        icon: material/hexagon
+        name: 赤红 f0332a
+    - scheme: default
+      primary: cyan
+      accent: cyan
+      toggle:
+        icon: material/hexagon
+        name: 青蓝 1fd0e0
+    - scheme: default
+      primary: green
+      accent: green
+      toggle:
+        icon: material/hexagon
+        name: 翠绿 2fd44a
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - navigation.sections
+    - navigation.indexes
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+extra_css:
+  - stylesheets/theme.css
+
+extra_javascript:
+  - javascripts/palette.js
+
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      title: 本页目录
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.saneheaders
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra:
+  generator: false
+
+nav:
+  - 概览: index.md
+  - 基础设定:
+      - 魔力基础原理: 魔力基础原理.md
+      - 魔导材料: 魔导材料.md
+  - 生产体系:
+      - 魔力生产 · 转化 · 消耗: 魔力生产-转化-消耗.md
+      - 发魔产线: 生产/发魔产线.md
+      - 矿物处理产线: 生产/矿处.md
+  - 其他想法: 其他想法.md

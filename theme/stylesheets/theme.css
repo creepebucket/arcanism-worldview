@@ -1,0 +1,299 @@
+/* ==========================================================================
+   世界观文档 · 配色与排版
+   4 套主题, 每套由两部分组成:
+     --md-primary-*   主题色   用于页头底色、选中的导航项、表格表头等"块"
+     --wz-accent      强调色   用于正文里的链接、加粗、高亮等"字"
+   原始色值原样保留在变量里; 正文用色是从它派生出的可读版本 (见 --wz-accent-ink),
+   因为这两组色直接铺在白底上做文字都会偏浅。
+   ========================================================================== */
+
+/* ---------- 1 金黄 ---------- */
+html[data-md-color-primary="yellow"] {
+  --md-primary-fg-color: #e6da1f;
+  --md-primary-fg-color--light: #efe75a;
+  --md-primary-fg-color--dark: #b3a80e;
+  --md-primary-bg-color: #17180a;
+  --md-primary-bg-color--light: rgba(23, 24, 10, 0.62);
+  --wz-accent: #d8d45a;
+  --wz-accent-ink: color-mix(in srgb, #d8d45a 58%, #12130a);
+}
+html[data-md-color-primary="yellow"]:not([data-md-color-scheme="slate"]) {
+  --md-typeset-a-color: color-mix(in srgb, #d8d45a 58%, #12130a);
+}
+
+/* ---------- 2 赤红 ---------- */
+html[data-md-color-primary="red"] {
+  --md-primary-fg-color: #f0332a;
+  --md-primary-fg-color--light: #f5605a;
+  --md-primary-fg-color--dark: #c01f18;
+  --md-primary-bg-color: #1a0705;
+  --md-primary-bg-color--light: rgba(26, 7, 5, 0.62);
+  --wz-accent: #e15d50;
+  --wz-accent-ink: color-mix(in srgb, #e15d50 74%, #140504);
+}
+html[data-md-color-primary="red"]:not([data-md-color-scheme="slate"]) {
+  --md-typeset-a-color: color-mix(in srgb, #e15d50 74%, #140504);
+}
+
+/* ---------- 3 青蓝 ---------- */
+html[data-md-color-primary="cyan"] {
+  --md-primary-fg-color: #1fd0e0;
+  --md-primary-fg-color--light: #4fdfec;
+  --md-primary-fg-color--dark: #12a7b5;
+  --md-primary-bg-color: #04262a;
+  --md-primary-bg-color--light: rgba(4, 38, 42, 0.62);
+  --wz-accent: #4ab8c4;
+  --wz-accent-ink: color-mix(in srgb, #4ab8c4 66%, #031a1c);
+}
+html[data-md-color-primary="cyan"]:not([data-md-color-scheme="slate"]) {
+  --md-typeset-a-color: color-mix(in srgb, #4ab8c4 66%, #031a1c);
+}
+
+/* ---------- 4 翠绿 ---------- */
+html[data-md-color-primary="green"] {
+  --md-primary-fg-color: #2fd44a;
+  --md-primary-fg-color--light: #5ce171;
+  --md-primary-fg-color--dark: #1faa36;
+  --md-primary-bg-color: #061f0b;
+  --md-primary-bg-color--light: rgba(6, 31, 11, 0.62);
+  --wz-accent: #67cf67;
+  --wz-accent-ink: color-mix(in srgb, #67cf67 64%, #05160a);
+}
+html[data-md-color-primary="green"]:not([data-md-color-scheme="slate"]) {
+  --md-typeset-a-color: color-mix(in srgb, #67cf67 64%, #05160a);
+}
+
+/* ---------- 强调色也跟随主题 ---------- */
+html[data-md-color-accent="yellow"] {
+  --md-accent-fg-color: #d8d45a;
+  --md-accent-fg-color--transparent: rgba(216, 212, 90, 0.1);
+}
+html[data-md-color-accent="red"] {
+  --md-accent-fg-color: #e15d50;
+  --md-accent-fg-color--transparent: rgba(225, 93, 80, 0.1);
+}
+html[data-md-color-accent="cyan"] {
+  --md-accent-fg-color: #4ab8c4;
+  --md-accent-fg-color--transparent: rgba(74, 184, 196, 0.1);
+}
+html[data-md-color-accent="green"] {
+  --md-accent-fg-color: #67cf67;
+  --md-accent-fg-color--transparent: rgba(103, 207, 103, 0.1);
+}
+
+/* ==========================================================================
+   字体
+   ========================================================================== */
+
+:root {
+  --md-text-font-family: -apple-system, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC",
+    "Microsoft YaHei", Roboto, sans-serif;
+  --md-code-font-family: "JetBrains Mono", "Cascadia Code", "SF Mono",
+    Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+.md-typeset {
+  font-size: 0.78rem;
+  line-height: 1.78;
+}
+
+/* 中文段落两端对齐会让长句里的空格分布更均匀, 但仍以左对齐为准 */
+.md-typeset p {
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+
+/* ==========================================================================
+   页头
+   ========================================================================== */
+
+.md-header {
+  box-shadow: 0 0.1rem 0.4rem rgba(0, 0, 0, 0.14);
+}
+
+.md-header__title {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* 搜索框在亮色页头上需要压暗, 否则白底几乎看不见 */
+.md-search__input {
+  background-color: rgba(0, 0, 0, 0.12);
+  color: var(--md-primary-bg-color);
+}
+
+.md-search__input::placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.md-search__input:hover {
+  background-color: rgba(0, 0, 0, 0.18);
+}
+
+/* ==========================================================================
+   配色选择器: 4 个色块同时可见, 点哪个切哪个
+   Material 默认只显示"下一个主题"的按钮, 这里改成并列的色卡
+   ========================================================================== */
+
+.md-header__option {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.md-header__option label {
+  display: inline-flex !important;
+  padding: 0.2rem;
+  border-radius: 0.25rem;
+  opacity: 0.45;
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.md-header__option label:hover {
+  opacity: 1;
+  transform: scale(1.12);
+}
+
+.md-header__option input:checked + label {
+  opacity: 1;
+}
+
+.md-header__option label svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+/* 每个色块用对应的主题色填充 (按页面顺序: 金黄 赤红 青蓝 翠绿) */
+.md-header__option label:nth-of-type(1) svg { fill: #e6da1f; }
+.md-header__option label:nth-of-type(2) svg { fill: #f0332a; }
+.md-header__option label:nth-of-type(3) svg { fill: #1fd0e0; }
+.md-header__option label:nth-of-type(4) svg { fill: #2fd44a; }
+
+/* 窄屏下页头空间紧张, 压缩间距 */
+@media screen and (max-width: 44.99em) {
+  .md-header__option {
+    gap: 0;
+  }
+  .md-header__option label {
+    padding: 0.15rem;
+  }
+  .md-header__option label svg {
+    width: 0.95rem;
+    height: 0.95rem;
+  }
+}
+
+/* ==========================================================================
+   正文强调
+   ========================================================================== */
+
+.md-typeset strong {
+  color: var(--wz-accent-ink);
+  font-weight: 700;
+}
+
+.md-typeset a:hover {
+  color: var(--wz-accent-ink);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.md-typeset mark {
+  background-color: color-mix(in srgb, var(--wz-accent) 45%, transparent);
+  color: #14140c;
+  padding: 0 0.18em;
+  border-radius: 0.15em;
+}
+
+/* 行内代码: 淡主题色底, 不用 Material 的灰色 */
+.md-typeset code {
+  background-color: color-mix(in srgb, var(--wz-accent) 16%, transparent);
+  border-radius: 0.15em;
+  padding: 0.1em 0.3em;
+}
+
+.md-typeset pre > code {
+  background-color: transparent;
+}
+
+/* ==========================================================================
+   导航与目录
+   ========================================================================== */
+
+.md-nav__link--active,
+.md-nav__link--active:hover {
+  color: var(--wz-accent-ink);
+  font-weight: 600;
+}
+
+.md-nav__item--section > .md-nav__link,
+.md-nav__title {
+  font-weight: 700;
+}
+
+/* 当前节的高亮条 */
+.md-nav__link:focus,
+.md-nav__link:hover {
+  color: var(--wz-accent-ink);
+}
+
+/* 右侧目录的当前位置 */
+.md-nav--secondary .md-nav__link--active {
+  border-left: 0.12rem solid var(--wz-accent);
+  padding-left: 0.5rem;
+  margin-left: -0.6rem;
+}
+
+/* ==========================================================================
+   表格 · 引用 · 提示块
+   ========================================================================== */
+
+.md-typeset table:not([class]) th {
+  background-color: color-mix(in srgb, var(--md-primary-fg-color) 26%, transparent);
+  font-weight: 700;
+  color: #14140c;
+}
+
+.md-typeset table:not([class]) tbody tr:hover {
+  background-color: color-mix(in srgb, var(--wz-accent) 12%, transparent);
+}
+
+.md-typeset blockquote {
+  border-left: 0.2rem solid var(--md-primary-fg-color);
+  color: var(--md-default-fg-color--light);
+}
+
+.md-typeset hr {
+  border-bottom-color: color-mix(in srgb, var(--wz-accent) 45%, transparent);
+}
+
+/* Material 的 admonition 标题色跟随主题 */
+.md-typeset .admonition,
+.md-typeset details {
+  border-color: var(--wz-accent);
+}
+
+.md-typeset .admonition-title,
+.md-typeset summary {
+  background-color: color-mix(in srgb, var(--wz-accent) 18%, transparent);
+}
+
+/* ==========================================================================
+   首页卡片
+   ========================================================================== */
+
+.md-typeset .grid.cards > ul > li {
+  border-color: color-mix(in srgb, var(--wz-accent) 35%, transparent);
+  transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  border-color: var(--wz-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.1);
+}
+
+.md-typeset .grid.cards > ul > li > hr {
+  border-bottom-color: color-mix(in srgb, var(--wz-accent) 40%, transparent);
+}

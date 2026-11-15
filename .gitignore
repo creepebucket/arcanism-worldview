@@ -1,0 +1,18 @@
+# MkDocs 构建产物 (由 hooks/sync_docs.py 每次自动重建)
+docs/*
+!docs/.gitkeep
+_site/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# 编辑器 / 系统
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.DS_Store
+Thumbs.db
+*.swp
