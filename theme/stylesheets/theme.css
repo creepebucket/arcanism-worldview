@@ -8,7 +8,7 @@
    ========================================================================== */
 
 /* ---------- 1 金黄 ---------- */
-html[data-md-color-primary="yellow"] {
+[data-md-color-primary="yellow"] {
   --md-primary-fg-color: #e6da1f;
   --md-primary-fg-color--light: #efe75a;
   --md-primary-fg-color--dark: #b3a80e;
@@ -17,12 +17,12 @@ html[data-md-color-primary="yellow"] {
   --wz-accent: #d8d45a;
   --wz-accent-ink: color-mix(in srgb, #d8d45a 58%, #12130a);
 }
-html[data-md-color-primary="yellow"]:not([data-md-color-scheme="slate"]) {
+[data-md-color-primary="yellow"]:not([data-md-color-scheme="slate"]) {
   --md-typeset-a-color: color-mix(in srgb, #d8d45a 58%, #12130a);
 }
 
 /* ---------- 2 赤红 ---------- */
-html[data-md-color-primary="red"] {
+[data-md-color-primary="red"] {
   --md-primary-fg-color: #f0332a;
   --md-primary-fg-color--light: #f5605a;
   --md-primary-fg-color--dark: #c01f18;
@@ -31,12 +31,12 @@ html[data-md-color-primary="red"] {
   --wz-accent: #e15d50;
   --wz-accent-ink: color-mix(in srgb, #e15d50 74%, #140504);
 }
-html[data-md-color-primary="red"]:not([data-md-color-scheme="slate"]) {
+[data-md-color-primary="red"]:not([data-md-color-scheme="slate"]) {
   --md-typeset-a-color: color-mix(in srgb, #e15d50 74%, #140504);
 }
 
 /* ---------- 3 青蓝 ---------- */
-html[data-md-color-primary="cyan"] {
+[data-md-color-primary="cyan"] {
   --md-primary-fg-color: #1fd0e0;
   --md-primary-fg-color--light: #4fdfec;
   --md-primary-fg-color--dark: #12a7b5;
@@ -45,12 +45,12 @@ html[data-md-color-primary="cyan"] {
   --wz-accent: #4ab8c4;
   --wz-accent-ink: color-mix(in srgb, #4ab8c4 66%, #031a1c);
 }
-html[data-md-color-primary="cyan"]:not([data-md-color-scheme="slate"]) {
+[data-md-color-primary="cyan"]:not([data-md-color-scheme="slate"]) {
   --md-typeset-a-color: color-mix(in srgb, #4ab8c4 66%, #031a1c);
 }
 
 /* ---------- 4 翠绿 ---------- */
-html[data-md-color-primary="green"] {
+[data-md-color-primary="green"] {
   --md-primary-fg-color: #2fd44a;
   --md-primary-fg-color--light: #5ce171;
   --md-primary-fg-color--dark: #1faa36;
@@ -59,24 +59,24 @@ html[data-md-color-primary="green"] {
   --wz-accent: #67cf67;
   --wz-accent-ink: color-mix(in srgb, #67cf67 64%, #05160a);
 }
-html[data-md-color-primary="green"]:not([data-md-color-scheme="slate"]) {
+[data-md-color-primary="green"]:not([data-md-color-scheme="slate"]) {
   --md-typeset-a-color: color-mix(in srgb, #67cf67 64%, #05160a);
 }
 
 /* ---------- 强调色也跟随主题 ---------- */
-html[data-md-color-accent="yellow"] {
+[data-md-color-accent="yellow"] {
   --md-accent-fg-color: #d8d45a;
   --md-accent-fg-color--transparent: rgba(216, 212, 90, 0.1);
 }
-html[data-md-color-accent="red"] {
+[data-md-color-accent="red"] {
   --md-accent-fg-color: #e15d50;
   --md-accent-fg-color--transparent: rgba(225, 93, 80, 0.1);
 }
-html[data-md-color-accent="cyan"] {
+[data-md-color-accent="cyan"] {
   --md-accent-fg-color: #4ab8c4;
   --md-accent-fg-color--transparent: rgba(74, 184, 196, 0.1);
 }
-html[data-md-color-accent="green"] {
+[data-md-color-accent="green"] {
   --md-accent-fg-color: #67cf67;
   --md-accent-fg-color--transparent: rgba(103, 207, 103, 0.1);
 }
@@ -117,18 +117,21 @@ html[data-md-color-accent="green"] {
   letter-spacing: 0.02em;
 }
 
-/* 搜索框在亮色页头上需要压暗, 否则白底几乎看不见 */
-.md-search__input {
-  background-color: rgba(0, 0, 0, 0.12);
-  color: var(--md-primary-bg-color);
+/* 搜索框: 页头是亮色底, 用半透明白底 + 深色字才看得清 */
+.md-search__form {
+  background-color: rgba(255, 255, 255, 0.55);
+}
+
+.md-search__form:hover {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .md-search__input::placeholder {
-  color: rgba(0, 0, 0, 0.45);
+  color: rgba(0, 0, 0, 0.5);
 }
 
-.md-search__input:hover {
-  background-color: rgba(0, 0, 0, 0.18);
+.md-search__input + .md-search__icon {
+  color: rgba(0, 0, 0, 0.7);
 }
 
 /* ==========================================================================
