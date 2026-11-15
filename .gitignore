@@ -1,7 +1,7 @@
-# MkDocs 构建产物 (由 hooks/sync_docs.py 每次自动重建)
-docs/*
-!docs/.gitkeep
-_site/
+# MkDocs 构建产物 (由 .site/hooks/sync_docs.py 每次自动重建)
+.site/docs/*
+!.site/docs/.gitkeep
+.site/.build/
 
 # Python
 __pycache__/

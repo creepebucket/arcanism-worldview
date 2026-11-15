@@ -4,7 +4,7 @@ site_description: 一个魔法工业 mod 的世界观与设定文档
 site_url: !ENV [SITE_URL, ""]
 
 docs_dir: docs
-site_dir: _site
+site_dir: .build
 
 # 构建前把根目录的笔记同步进 docs/, 详见 hooks/sync_docs.py
 hooks:

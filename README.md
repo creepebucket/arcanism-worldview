@@ -5,27 +5,38 @@
 
 ## 目录约定
 
+根目录只放笔记本身, 站点相关的东西全部收在 `.site/` 里 (隐藏目录, Obsidian 不会显示它)。
+
 | 路径 | 作用 |
 |------|------|
 | `*.md`、`生产/*.md` | 正文。用 Obsidian 正常编辑即可 |
-| `index.md` | 站点首页 |
-| `mkdocs.yml` | 站点配置: 导航、配色主题、Markdown 扩展 |
-| `theme/stylesheets/theme.css` | 4 套主题色的定义与排版微调 |
-| `theme/javascripts/palette.js` | 把 4 个色块摆成并排的切换按钮 |
-| `hooks/sync_docs.py` | 构建前把正文复制进 `docs/`, 平时不用管 |
-| `docs/` | 构建中间产物, 已在 `.gitignore` 里 |
+| `AGENTS.md` | 写给自己和 AI 的协作约定, 不上站 |
+| `.site/mkdocs.yml` | 站点配置: 导航、主题色、Markdown 扩展 |
+| `.site/pages/index.md` | 首页文案 |
+| `.site/theme/` | 4 套配色的 CSS 和色块切换脚本 |
+| `.site/hooks/` | 构建前把根目录正文同步进 `docs/` |
+| `.site/docs/`、`.site/.build/` | 构建产物, 已在 `.gitignore` 里 |
 
-新增一篇文档后, 记得在 `mkdocs.yml` 的 `nav:` 里加一行, 否则构建会报错。
+新增一篇文档后, 记得在 `.site/mkdocs.yml` 的 `nav:` 里加一行, 否则构建会报错。
 
 ## 本地预览
 
+首次需要装一次依赖:
+
 ```bash
 python3 -m venv .venv
-.venv/bin/pip install -r requirements.txt
-.venv/bin/mkdocs serve
+.venv/bin/pip install -r .site/requirements.txt
+```
+
+之后:
+
+```bash
+.venv/bin/mkdocs serve -f .site/mkdocs.yml
 ```
 
 浏览器打开 http://127.0.0.1:8000 即可, 改动会自动刷新。
+
+只构建不预览用 `.venv/bin/mkdocs build -f .site/mkdocs.yml`, 产物在 `.site/.build/`。
 
 ## 配色
 
@@ -38,7 +49,7 @@ python3 -m venv .venv
 | 青蓝 | `#1fd0e0` | `#4ab8c4` |
 | 翠绿 | `#2fd44a` | `#67cf67` |
 
-改色只需要动 `theme/stylesheets/theme.css` 顶部四个 `html[data-md-color-primary=...]` 块。
+改色只需要动 `.site/theme/stylesheets/theme.css` 顶部四个 `[data-md-color-primary=...]` 块。
 
 ## 首次部署
 
